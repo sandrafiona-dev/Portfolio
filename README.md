@@ -1,6 +1,9 @@
-Sandra Fiona — Portfolio
+<div align="left">
+🌌 Sandra Fiona's Portfolio
+
 An immersive 3D developer portfolio built with React, Three.js & Framer Motion.
 Showcasing AI/ML projects at the intersection of healthcare, music, and algorithms.
+</div>
 
 🔮 Featured Projects
 ProjectDescriptionStackRetinaHeart AIRetinal fundus image analysis for cardiovascular risk predictionPyTorch · FastAPI · ReactBeat QuestSpotify-powered music quiz game for Gen ZTypeScript · Spotify APIRecamán QueriesCompetitive programming solution using segment tree + Miller-RabinPython · DSA
@@ -42,9 +45,6 @@ Performance — Adaptive DPR for mobile, code-splitting, Vite bundle optimisatio
 Responsive Design — Mobile-first Tailwind layouts across all breakpoints
 
 
-📸 Screenshots
-![Uploading ChatGPT Image May 30, 2026, 08_53_30 PM.png…]()
-
 🗺 Roadmap
 
  Deploy to Vercel with custom domain
@@ -62,7 +62,15 @@ For bugs or suggestions, open a GitHub Issue
 📄 License
 MIT — feel free to draw inspiration and build your own.
 
-<div align="center">
+<div align="left">
+Sandra Fiona · MCA Generative AI · Tamil Nadu, India
+Show Image
+Building AI products that are emotionally resonant and technically rigorous.
+</div>
+📄 License
+MIT — feel free to draw inspiration and build your own.
+
+<div align="left">
 Sandra Fiona · MCA Generative AI · Tamil Nadu, India
 Show Image
 Building AI products that are emotionally resonant and technically rigorous.
