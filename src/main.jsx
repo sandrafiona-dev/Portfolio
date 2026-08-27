@@ -59,7 +59,9 @@ const projects = [
     description: "AI-powered retinal image analysis platform for cardiovascular risk prediction.",
     features: ["Retinal image analysis", "Grad-CAM explanations", "PDF clinical reports"],
     tech: ["PyTorch", "FastAPI", "React", "Gemini API"],
+    github: "https://github.com/sandrafiona-dev/OculoCardia-AI",
     accent: "from-rose/50 to-cyan/30",
+
   },
   {
     index: "02",
@@ -67,14 +69,16 @@ const projects = [
     description: "Spotify-powered music quiz platform designed for Gen Z and Gen Alpha audiences.",
     features: ["Music quizzes", "Spotify integration", "Dynamic gameplay"],
     tech: ["React", "TypeScript", "Spotify API"],
+    github: "https://github.com/sandrafiona-dev/beat-quest-tunes",
     accent: "from-lilac/50 to-rose/30",
   },
   {
     index: "03",
     name: "Portfolio",
     description: "A storytelling-driven portfolio featuring immersive UI, 3D interactions, and modern frontend engineering.",
-    features: ["3D UI","Responsive layout","Motion effects"],
-    tech: ["React","Three.js","Tailwind"],
+    features: ["3D UI", "Responsive layout", "Motion effects"],
+    tech: ["React", "Three.js", "Tailwind"],
+    github: "https://github.com/sandrafiona-dev/Portfolio",
     accent: "from-cyan/40 to-lilac/30",
   },
 ];
@@ -244,7 +248,7 @@ function MiniScene({ variant = 0, className = "" }) {
 
 function HeroScene() {
   return (
-    <Canvas camera={{ position: [0, 0, 5.2], fov: 42 }} dpr={[1, 1.8]}>
+    <Canvas style={{ width: "100%", height: "100%" }} camera={{ position: [0, 0, 6], fov: 48 }} dpr={[0.75, 1.25]}>
       <ambientLight intensity={0.8} />
       <pointLight position={[2, 2, 4]} intensity={3.2} color="#ff9dd2" />
       <pointLight position={[-3, -2, 2]} intensity={2.3} color="#7ee7ff" />
@@ -316,7 +320,7 @@ function CustomCursor() {
   );
 }
 
-function TiltCard({ children, className = "" }) {
+function TiltCard({ children, className = "", id }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-80, 80], [7, -7]);
@@ -324,6 +328,7 @@ function TiltCard({ children, className = "" }) {
 
   return (
     <motion.div
+      id={id}
       className={`glass-card magnetic ${className}`}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       onMouseMove={(event) => {
@@ -404,7 +409,7 @@ function Hero() {
         <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }}>
           <div className="eyebrow">MCA Gen AI Student</div>
           <h1 className="hero-title">
-            Building <span className="gradient-text">digital experiences</span> that feel human.
+            Turning <span className="gradient-text">AI ideas</span> into working applications.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-ink/78">
             MCA Generative AI student building AI-powered applications through thoughtful design,
@@ -414,9 +419,27 @@ function Hero() {
             <a href="#projects" className="primary-button">
               <Sparkle className="h-4 w-4" /> Explore My Work
             </a>
-            <a href="#contact" className="secondary-button">
+            <button
+              type="button"
+              className="secondary-button"
+              onClick={() => {
+                const contact = document.getElementById("contact");
+
+                if (contact) {
+                  const y =
+                    contact.getBoundingClientRect().top +
+                    window.scrollY -
+                    80;
+
+                  window.scrollTo({
+                    top: y,
+                    behavior: "smooth",
+                  });
+                }
+              }}
+            >
               Get In Touch <Send className="h-4 w-4" />
-            </a>
+            </button>
             <a href="Sandra_Fiona_Resume.pdf" target="_blank" rel="noreferrer" className="secondary-button">
               Resume <Download className="h-4 w-4" />
             </a>
@@ -432,7 +455,7 @@ function Hero() {
           </div>
         </motion.div>
 
-        <div className="relative h-[430px] min-h-[360px] lg:h-[560px]">
+        <div className="relative h-[460px] sm:h-[460px] md:h-[460px] lg:h-[560px] w-full">
           <div className="hero-orbit" />
           <HeroScene />
           <motion.div
@@ -472,9 +495,6 @@ function Story() {
             From solving small problems to building intelligent systems, Sandra&apos;s journey is
             fueled by curiosity, creativity, and the belief that technology can make a real impact.
           </p>
-          <a href="#contact" className="secondary-button fit">
-            More About Me <ArrowRight className="h-4 w-4" />
-          </a>
         </div>
         <div className="timeline">
           {milestones.map((item, index) => (
@@ -513,7 +533,8 @@ function Projects() {
             <div className="tech-row">
               {project.tech.map((tech) => <span key={tech}>{tech}</span>)}
             </div>
-            <a href="#contact" className="card-link">View Project <ArrowRight className="h-4 w-4" /></a>
+            <a href={project.github} target="_blank" rel="noreferrer" className="card-link" >
+              View Project <ArrowRight className="h-4 w-4" /> </a>
           </TiltCard>
         ))}
       </div>
@@ -554,8 +575,17 @@ function EducationContact() {
 
   function submit(event) {
     event.preventDefault();
+
     if (command.trim().toLowerCase() === "sudo hire sandra") {
       setCelebrate(true);
+
+      window.setTimeout(() => {
+        window.open(
+          "https://mail.google.com/mail/?view=cm&fs=1&to=sandrafiona11@gmail.com&su=Let's%20Work%20Together&body=Hi%20Sandra%2C%0A%0AI%27d%20like%20to%20discuss%20an%20opportunity%20with%20you.",
+          "_blank"
+        );
+      }, 700);
+
       window.setTimeout(() => setCelebrate(false), 2600);
     }
   }
@@ -606,7 +636,8 @@ function EducationContact() {
       </TiltCard>
 
       <div className="contact-strip">
-        <a href="mailto:sandrafiona11@gmail.com"><Mail className="h-4 w-4" /> Email</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sandrafiona11@gmail.com&su=Let's%20Work%20Together&body=Hi%20Sandra%2C%0A%0AI%27d%20like%20to%20discuss%20an%20opportunity%20with%20you."
+          target="_blank" rel="noreferrer" > <Mail className="h-4 w-4" /> Email </a>
         <a href="https://linkedin.com/in/sandra-fiona-814903265" target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4" /> LinkedIn</a>
         <a href="https://github.com/sandrafiona-dev" target="_blank" rel="noreferrer"><Github className="h-4 w-4" /> GitHub</a>
         <a href="Sandra_Fiona_Resume.pdf" target="_blank" rel="noreferrer"><Download className="h-4 w-4" /> Resume</a>
