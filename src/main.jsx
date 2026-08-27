@@ -662,9 +662,11 @@ function App() {
     <>
       <CustomCursor />
       <div className="ambient-bg" />
-      <div className="ambient-canvas" aria-hidden="true">
-        <AmbientScene />
-      </div>
+      {!window.matchMedia("(max-width: 768px)").matches && (
+        <div className="ambient-canvas" aria-hidden="true">
+          <AmbientScene />
+        </div>
+      )}
       <Header theme={theme} onThemeToggle={toggleTheme} />
       <main>
         <Hero />
