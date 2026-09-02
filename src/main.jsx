@@ -55,6 +55,28 @@ const skills = [
 const projects = [
   {
     index: "01",
+    name: "AI Recruitment Platform",
+    description:
+      "AI-powered recruitment platform that parses resumes and job descriptions, evaluates candidate-job fit, identifies skill gaps, and generates role recommendations.",
+    features: [
+      "Resume & job parsing",
+      "TF-IDF candidate matching",
+      "Skill-gap analysis",
+      "Role recommendations",
+    ],
+    tech: [
+      "React",
+      "FastAPI",
+      "Python",
+      "Scikit-learn",
+      "Docker",
+      "pytest",
+    ],
+    github: "https://github.com/sandrafiona-dev/AI-Recruitment-Platform",
+    accent: "from-cyan/40 to-lilac/30",
+  },
+  {
+    index: "02",
     name: "RetinaHeart AI",
     description: "AI-powered retinal image analysis platform for cardiovascular risk prediction.",
     features: ["Retinal image analysis", "Grad-CAM explanations", "PDF clinical reports"],
@@ -64,7 +86,7 @@ const projects = [
 
   },
   {
-    index: "02",
+    index: "03",
     name: "Beat Quest",
     description: "Spotify-powered music quiz platform designed for Gen Z and Gen Alpha audiences.",
     features: ["Music quizzes", "Spotify integration", "Dynamic gameplay"],
@@ -73,7 +95,7 @@ const projects = [
     accent: "from-lilac/50 to-rose/30",
   },
   {
-    index: "03",
+    index: "04",
     name: "Portfolio",
     description: "A storytelling-driven portfolio featuring immersive UI, 3D interactions, and modern frontend engineering.",
     features: ["3D UI", "Responsive layout", "Motion effects"],
