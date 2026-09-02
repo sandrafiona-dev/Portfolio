@@ -32,23 +32,31 @@ const roles = [
 const skills = [
   {
     title: "Frontend",
-    items: ["React", "Vite", "Tailwind CSS", "Three.js"],
+    items: ["React", "Vite", "TypeScript", "Tailwind CSS", "Three.js"],
   },
   {
-    title: "Backend",
-    items: ["Python", "FastAPI", "SQLite"],
+    title: "Backend & APIs",
+    items: ["Python", "FastAPI", "REST APIs", "SQLite"],
   },
   {
     title: "AI & Machine Learning",
-    items: ["PyTorch", "ResNet-50", "U-Net", "Grad-CAM", "Gemini API"],
+    items: [
+      "Generative AI",
+      "PyTorch",
+      "Computer Vision",
+      "U-Net",
+      "ResNet-50",
+      "NLP",
+      "Grad-CAM",
+    ],
   },
   {
-    title: "Tools",
-    items: ["Git", "GitHub", "VS Code", "ngrok"],
+    title: "Testing & Tools",
+    items: ["pytest", "HTTPX", "Git", "GitHub", "Docker", "GitHub Actions"],
   },
   {
     title: "UI Engineering",
-    items: ["Glassmorphism", "Motion Design"],
+    items: ["Tailwind CSS", "Three.js", "Framer Motion", "Motion Design"],
   },
 ];
 
@@ -78,8 +86,8 @@ const projects = [
   {
     index: "02",
     name: "RetinaHeart AI",
-    description: "AI-powered retinal image analysis platform for cardiovascular risk prediction.",
-    features: ["Retinal image analysis", "Grad-CAM explanations", "PDF clinical reports"],
+    description: "AI-powered computer vision platform that analyzes retinal fundus images for cardiovascular risk assessment using vessel segmentation, deep-learning classification, and explainable AI.",
+    features: ["Retinal image preprocessing", "U-Net vessel segmentation", "ResNet-50 classification", "Grad-CAM visual explanations", "Cardiovascular risk assessment", "Clinical PDF reports"],
     tech: ["PyTorch", "FastAPI", "React", "Gemini API"],
     github: "https://github.com/sandrafiona-dev/OculoCardia-AI",
     accent: "from-rose/50 to-cyan/30",
@@ -96,11 +104,17 @@ const projects = [
   },
   {
     index: "04",
-    name: "Portfolio",
-    description: "A storytelling-driven portfolio featuring immersive UI, 3D interactions, and modern frontend engineering.",
-    features: ["3D UI", "Responsive layout", "Motion effects"],
-    tech: ["React", "Three.js", "Tailwind"],
-    github: "https://github.com/sandrafiona-dev/Portfolio",
+    name: "Spotify Finder",
+    description:
+      "React-based Spotify search application for discovering songs through the Spotify Web API.",
+
+    features: [
+      "Track search",
+      "Spotify Web API integration",
+      "Reusable React components",
+    ],
+    tech: ["React", "JavaScript", "Spotify API"],
+    github: "https://github.com/sandrafiona-dev/spotify-finder",
     accent: "from-cyan/40 to-lilac/30",
   },
 ];
@@ -256,6 +270,10 @@ function ProjectArtifact({ variant = 0 }) {
 }
 
 function MiniScene({ variant = 0, className = "" }) {
+  const isMobile = useIsMobile();
+
+  if (isMobile) return null;
+
   return (
     <div className={`mini-scene ${className}`} aria-hidden="true">
       <Canvas camera={{ position: [0, 0, 3.4], fov: 36 }} dpr={[1, 1.6]} gl={{ alpha: true }}>
@@ -282,6 +300,24 @@ function HeroScene() {
       </Suspense>
     </Canvas>
   );
+}
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() =>
+    window.matchMedia("(max-width: 768px)").matches
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mediaQuery.matches);
+
+    update();
+    mediaQuery.addEventListener("change", update);
+
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  return isMobile;
 }
 
 function useTyping(words) {
@@ -497,33 +533,66 @@ function Hero() {
 }
 
 function Story() {
-  const milestones = ["Tamil Nadu", "BCA Graduate", "MCA Gen AI", "Building Impact"];
+  const milestones = [
+    "Tamil Nadu",
+    "BCA Graduate",
+    "MCA Gen AI",
+    "Building Impact",
+  ];
+
   return (
     <section id="about" className="section">
       <div className="chapter-label">Chapter 01</div>
+
       <TiltCard className="story-grid">
         <div>
           <h2>My Story</h2>
+
           <div className="photo-stack" aria-hidden="true">
             <div className="photo-card sunset" />
             <div className="photo-card code" />
             <div className="photo-card ocean" />
-            <span className="paper-note">keep<br />building</span>
+            <span className="paper-note">
+              keep
+              <br />
+              building
+            </span>
           </div>
         </div>
+
         <div className="story-copy">
-          <p className="story-lead">A curious student from Tamil Nadu who fell in love with code.</p>
-          <p>
-            From solving small problems to building intelligent systems, Sandra&apos;s journey is
-            fueled by curiosity, creativity, and the belief that technology can make a real impact.
+          <p className="story-lead">
+            I build AI-powered applications that turn machine learning
+            concepts into practical, usable products.
           </p>
+
+          <p>
+            My work spans Computer Vision, Generative AI, full-stack
+            development, and interactive web experiences.
+          </p>
+
+          <div className="story-tags" aria-label="Core focus areas">
+            <span>AI/ML</span>
+            <span>Computer Vision</span>
+            <span>Full Stack</span>
+            <span>Generative AI</span>
+          </div>
         </div>
+
         <div className="timeline">
           {milestones.map((item, index) => (
             <div className="timeline-item" key={item}>
               <span>{index + 1}</span>
               <strong>{item}</strong>
-              <p>{index === 0 ? "Where my story began" : index === 1 ? "Built the foundation" : index === 2 ? "Exploring the future" : "Creating meaningful products"}</p>
+              <p>
+                {index === 0
+                  ? "Where my story began"
+                  : index === 1
+                    ? "Built the foundation"
+                    : index === 2
+                      ? "Exploring the future"
+                      : "Creating meaningful products"}
+              </p>
             </div>
           ))}
         </div>

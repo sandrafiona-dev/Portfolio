@@ -356,13 +356,19 @@ input {
 }
 
 .floating-note {
+  position: absolute;
   right: 12px;
   bottom: 12px;
+  z-index: 5;
   width: 180px;
   padding: 0.9rem;
   font-size: 0.85rem;
   color: #fff;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(126, 231, 255, 0.08));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(126, 231, 255, 0.08)
+  );
   border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 22px;
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.36);
@@ -512,6 +518,45 @@ h2 {
   line-height: 1.5;
 }
 
+.story-description {
+  margin-top: 14px;
+  max-width: 720px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.story-focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.story-focus span {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(10px);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.story-focus span:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .timeline {
   align-self: center;
 }
@@ -580,7 +625,7 @@ h2 {
 }
 
 .project-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .project-card,
@@ -1240,6 +1285,18 @@ body[data-theme="light"] .terminal-top {
   button,
   input {
     cursor: auto;
+  }
+
+  @media (max-width: 760px) {
+    .story-focus {
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .story-focus span {
+      padding: 7px 11px;
+      font-size: 0.72rem;
+    }
   }
 
   .custom-cursor {
